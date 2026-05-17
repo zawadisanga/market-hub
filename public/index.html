@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarketHub - Buy & Sell Products Online</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-store"></i>
+                <span>MarketHub</span>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search products...">
+                <button id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="nav-links">
+                <a href="#" id="homeLink"><i class="fas fa-home"></i> Home</a>
+                <a href="#" id="sellLink"><i class="fas fa-plus-circle"></i> Sell</a>
+                <a href="#" id="messagesLink"><i class="fas fa-envelope"></i> Messages</a>
+                <a href="#" id="myProductsLink"><i class="fas fa-box"></i> My Products</a>
+                <div id="authLinks">
+                    <button id="loginBtn" class="btn-primary">Login</button>
+                    <button id="registerBtn" class="btn-secondary">Register</button>
+                </div>
+                <div id="userMenu" style="display: none;">
+                    <div class="user-dropdown">
+                        <img id="userAvatar" alt="Avatar">
+                        <span id="userName"></span>
+                        <i class="fas fa-chevron-down"></i>
+                        <div class="dropdown-content">
+                            <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Products Grid -->
+        <div id="productsView" class="products-grid"></div>
+
+        <!-- Sell Product Form -->
+        <div id="sellView" style="display: none;" class="sell-form-container">
+            <h2>List Your Product</h2>
+            <form id="sellForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Product Title</label>
+                    <input type="text" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea name="description" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Price ($)</label>
+                    <input type="number" name="price" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select name="category" required>
+                        <option value="electronics">Electronics</option>
+                        <option value="clothing">Clothing</option>
+                        <option value="books">Books</option>
+                        <option value="home">Home & Garden</option>
+                        <option value="sports">Sports</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Condition</label>
+                    <select name="condition" required>
+                        <option value="new">New</option>
+                        <option value="like-new">Like New</option>
+                        <option value="good">Good</option>
+                        <option value="fair">Fair</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Images (up to 5)</label>
+                    <input type="file" name="images" accept="image/*" multiple required>
+                </div>
+                <button type="submit" class="btn-primary">List Product</button>
+            </form>
+        </div>
+
+        <!-- My Products View -->
+        <div id="myProductsView" style="display: none;" class="my-products">
+            <h2>My Products</h2>
+            <div id="myProductsGrid" class="products-grid"></div>
+        </div>
+
+        <!-- Messages View -->
+        <div id="messagesView" style="display: none;" class="messages-container">
+            <div class="chats-sidebar">
+                <h3>Conversations</h3>
+                <div id="chatsList"></div>
+            </div>
+            <div class="chat-area">
+                <div id="chatHeader" class="chat-header"></div>
+                <div id="chatMessages" class="chat-messages"></div>
+                <div id="chatInput" style="display: none;" class="chat-input-container">
+                    <textarea id="messageInput" placeholder="Type your message..."></textarea>
+                    <button id="sendMessageBtn"><i class="fas fa-paper-plane"></i> Send</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Detail Modal -->
+        <div id="productModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="productDetail"></div>
+            </div>
+        </div>
+
+        <!-- Login Modal -->
+        <div id="loginModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Login</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Register Modal -->
+        <div id="registerModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Register</h2>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="regFullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" id="regUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="regEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="regPassword" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>
