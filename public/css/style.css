@@ -1,0 +1,444 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f5f5f5;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4F46E5;
+}
+
+.logo i {
+    margin-right: 0.5rem;
+}
+
+.search-bar {
+    flex: 1;
+    max-width: 400px;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.search-bar button {
+    padding: 0.5rem 1rem;
+    background: #4F46E5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #666;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #4F46E5;
+}
+
+/* Buttons */
+.btn-primary, .btn-secondary {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: #4F46E5;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #4338CA;
+}
+
+.btn-secondary {
+    background: #10B981;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #059669;
+}
+
+/* Products Grid */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.product-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 1rem;
+}
+
+.product-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.product-price {
+    color: #4F46E5;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.product-seller {
+    color: #666;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.seller-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+/* Forms */
+.sell-form-container, .my-products {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input, 
+.form-group textarea, 
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #4F46E5;
+}
+
+/* Messages */
+.messages-container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 1rem;
+    height: calc(100vh - 120px);
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.chats-sidebar {
+    background: #f9f9f9;
+    border-right: 1px solid #e0e0e0;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.chat-item {
+    padding: 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    transition: background 0.3s;
+}
+
+.chat-item:hover, .chat-item.active {
+    background: #e8e8e8;
+}
+
+.chat-area {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.chat-header {
+    padding: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+    background: white;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.message {
+    max-width: 70%;
+    padding: 0.75rem;
+    border-radius: 12px;
+    word-wrap: break-word;
+}
+
+.message-sent {
+    background: #4F46E5;
+    color: white;
+    align-self: flex-end;
+}
+
+.message-received {
+    background: #f0f0f0;
+    color: #333;
+    align-self: flex-start;
+}
+
+.message-time {
+    font-size: 0.7rem;
+    margin-top: 0.25rem;
+    opacity: 0.7;
+}
+
+.chat-input-container {
+    padding: 1rem;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.chat-input-container textarea {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    resize: none;
+    font-family: inherit;
+}
+
+.chat-input-container button {
+    padding: 0.75rem 1.5rem;
+    background: #4F46E5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    animation: fadeIn 0.3s;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideDown 0.3s;
+}
+
+.close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #999;
+}
+
+.close:hover {
+    color: #333;
+}
+
+/* User Dropdown */
+.user-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.user-dropdown img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    min-width: 150px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    z-index: 1;
+}
+
+.user-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 0.75rem;
+    text-decoration: none;
+    color: #333;
+}
+
+.dropdown-content a:hover {
+    background: #f0f0f0;
+}
+
+/* Typing Indicator */
+.typing-indicator {
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+    padding: 0.5rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+    }
+    
+    .search-bar {
+        max-width: 100%;
+    }
+    
+    .messages-container {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    
+    .chats-sidebar {
+        max-height: 300px;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .message {
+        max-width: 85%;
+    }
+}
